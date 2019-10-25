@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <title>Find That Word</title>
+</head>
+
+<body>
+<div id="app" style="margin: 4% 2%; padding: 2%; background-color: white;">
+
+  <div>
+    <h1 class="branding">FIND THAT WORD</h1>
+    <p><span class="branding">FIND THAT WORD</span> can help you remember a word you almost but not quite remember.
+      (Additionally, it can help with more mundane tasks, like finding synonyms, antonyms, and rhyming words.)
+      Simply define some criteria below, and press <span class="branding">GO</span>!
+    </p>
+  </div>
+
+  <div style="padding-left: 5%;">
+
+    <div class="input_block">
+      <p  class="input_label branding">means: </p>
+      <input class="input" type="text" v-model="meaning">
+    </div>
+
+    <div class="input_block">
+      <p class="input_label branding">sounds like: </p>
+      <input class="input" type="text" v-model="sound">
+    </div>
+
+    <div class="input_block">
+      <p class="input_label branding">spelled like: </p>
+      <input class="input" type="text" v-model="spelling"/>
+    </div>
+
+    <div class="input_block">
+      <p class="input_label branding">rhymes with: </p>
+      <input class="input" type="text" v-model="rhyme">
+    </div>
+
+    <div class="input_block">
+      <p class="input_label branding">related to:</p>
+      <input class="input" type="text" v-model="relation">
+    </div>
+
+    <div class="input_block">
+      <div class="button_cell">
+        <button class="slide-button branding" v-on:click="findWord">
+          GO
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div>
+
+    <div v-if="best_word != ''">
+      <hr>
+      <p class="branding">BEST WORD FOUND: <b>{{best_word}}</b></p>
+    </div>
+    <div v-if="best_word == ''">
+      <hr>
+      <p class="branding">BEST WORD FOUND: None found.</p>
+    </div>
+
+    <div class="lists_block">
+
+      <div class="list_block" v-if="meaning_word_list.length != 0">
+        <p class="branding">means {{meaning}}</p>
+        <ul>
+          <li v-for="word in meaning_word_list">
+            {{word.word}}
+          </li>
+        </ul>
+      </div>
+
+      <div class="list_block" v-if="sound_word_list.length != 0">
+        <p class="branding">sounds like {{sound}}</p>
+        <ul>
+          <li v-for="word in sound_word_list">
+            {{word.word}}
+          </li>
+        </ul>
+      </div>
+
+      <div class="list_block" v-if="spelling_word_list.length != 0">
+        <p class="branding">spelled like {{spelling}}</p>
+        <ul>
+          <li v-for="word in spelling_word_list">
+            {{word.word}}
+          </li>
+        </ul>
+      </div>
+
+      <div class="list_block" v-if="rhyme_word_list.length != 0">
+        <p class="branding">rhymes with {{rhyme}}</p>
+        <ul>
+          <li v-for="word in rhyme_word_list">
+            {{word.word}}
+          </li>
+        </ul>
+      </div>
+
+      <div class="list_block" v-if="relation_word_list.length != 0">
+        <p class="branding">related to {{relation}}</p>
+        <ul>
+          <li v-for="word in relation_word_list">
+            {{word.word}}
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div>
+    <hr>
+    <p>
+      Check out the Github repo: <a href="https://github.com/maydelotte/word"> github.com/maydelotte/word </a>
+    </p>
+  </div>
+
+</div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,62 @@
+body {
+  background-color: #eb5b34;
+}
+
+.branding {
+  font-family: sans-serif;
+  font-style: italic;
+}
+
+.input_block {
+  display: table;
+  margin: 2vh;
+}
+.input_label {
+  display: table-cell;
+  width: 25vw;
+  text-align: right;
+  padding-right: 3px;
+}
+.input {
+  display: table-cell;
+}
+
+button {
+  background: none;
+  border: 2px solid #25A85E;
+  font: inherit;
+  line-height: 1;
+  margin: 0.2em;
+  padding: 0.5em 1em;
+  font-family: sans-serif;
+}
+button:hover {
+  box-shadow: inset 6.5em 0 0 0 var(--hover);
+  color: white;
+  background-color: #25A85E;
+  border-color: #25A85E;
+}
+.button_cell {
+  display: table-cell;
+  width: 35vw;
+  text-align: right;
+  padding-right: 3px;
+}
+
+.lists_block {
+  display: table;
+}
+.list_block {
+  display: table-cell;
+  padding: 0 1vw;
+  padding-bottom: 2vh;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  margin: 0;
+  padding: 0;
+}
