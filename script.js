@@ -21,13 +21,6 @@ let app = new Vue({
   computed: {
   },
   watch: {
-    number(value, oldvalue) {
-      if (oldvalue === '') {
-        this.max = value;
-      } else {
-        this.xkcd();
-      }
-    },
   },
   methods: {
     async findWord() {
@@ -53,7 +46,7 @@ let app = new Vue({
         // Get new word stuff
         var baseUrl = "https://api.datamuse.com/words?";
         if (this.meaning != '') {
-          const meaning_response = await axios.get(baseUrl + "ml=" + this.meaning);
+          const meaning_response = await axios.get(baseUrl + "ml=" + this.meaning, { crossdomain: true });
           this.meaning_word_list = meaning_response.data.slice(0, list_length);
           this.meaning_word_list.forEach( (word, index) => {
             if (!(word.word in this.dict)) {
@@ -67,7 +60,7 @@ let app = new Vue({
           });
         }
         if (this.sound != '') {
-          const sound_response = await axios.get(baseUrl + "sl=" + this.sound);
+          const sound_response = await axios.get(baseUrl + "sl=" + this.sound, { crossdomain: true });
           this.sound_word_list = sound_response.data.slice(0, list_length);
           this.sound_word_list.forEach( (word, index) => {
             if (!(word.word in this.dict)) {
@@ -81,7 +74,7 @@ let app = new Vue({
           });
         }
         if (this.spelling != '') {
-          const spelling_response = await axios.get(baseUrl + "sp=" + this.spelling);
+          const spelling_response = await axios.get(baseUrl + "sp=" + this.spelling, { crossdomain: true });
           this.spelling_word_list = spelling_response.data.slice(0, list_length);
           this.spelling_word_list.forEach( (word, index) => {
             if (!(word.word in this.dict)) {
@@ -95,7 +88,7 @@ let app = new Vue({
           });
         }
         if (this.rhyme != '') {
-          const rhyme_response = await axios.get(baseUrl + "rel_rhy=" + this.rhyme);
+          const rhyme_response = await axios.get(baseUrl + "rel_rhy=" + this.rhyme, { crossdomain: true });
           this.rhyme_word_list = rhyme_response.data.slice(0, list_length);
           this.rhyme_word_list.forEach( (word, index) => {
             if (!(word.word in this.dict)) {
@@ -109,7 +102,7 @@ let app = new Vue({
           });
         }
         if (this.relation != '') {
-          const relation_response = await axios.get(baseUrl + "rel_trg=" + this.relation);
+          const relation_response = await axios.get(baseUrl + "rel_trg=" + this.relation, { crossdomain: true });
           this.relation_word_list = relation_response.data.slice(0, list_length);
           this.relation_word_list.forEach( (word, index) => {
             if (!(word.word in this.dict)) {
@@ -133,7 +126,6 @@ let app = new Vue({
 
       } catch (error) {
         console.log(error);
-        this.number = this.max;
       }
     },
   }
